@@ -31,23 +31,24 @@
 </br>
 
 
-<div class="container">
-<div class="row">
+<div class="container mx-auto">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-center">
 
 {% for ref in produtos %}
 
-<div class="col">
-<div class="card" style="width: 18rem;">
+<div class="col mb-4">
+<div class="card h-100" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Produto</h5>
     <p> Nome:  {{ref.nome}} </p>
       {% load static %}
         <img src=" {{ref.imagem}}" height="250px" width="255px"card-img-top">
     
-  <h5>>Por: R$ {{ref.valor}}</h5>
+  <h5>Por: R$ {{ref.valor}}</h5>
     <p class="card-text">Categoria: {{ref.categoria}}</p>
     <p class="card-text">Descrição: {{ref.descricao}}</p>
-    <a href="#" class="btn btn-primary">Comprar</a>
+    <p class="card-text">Estado: {{ref.estado_produto}}</p>
+    <a href="{% url 'produto' ref.id %}" class="btn btn-primary">Detalhe</a>
   </div>
 </div>
 </div>

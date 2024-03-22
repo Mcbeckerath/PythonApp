@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+
+
+<div class="container mx-auto">
+
+    <div class="row">
+       <h5> {{produto.nome}}</h5>
+    </div>
+
+    <div class="row-cols-md-3 row-cols-lg-4 justify-content-start">
+    
+        <img src=" {{produto.imagem}}" height="250px" width="255px"card-img-top">
+    </div>
+
+    <div class="row">
+       <a><strong>Valor: {{produto.valor}}</strong></a>
+    </div>
+
+    <div class="row">
+       <a><strong>Categoria: {{produto.categoria}}</strong></a> 
+    </div>
+
+
+    <div class="row">
+        <a><strong>Descrição: {{produto.descricao}}</strong></a>
+    </div>
+
+
+    <div class="row">
+       <a> <strong>Estado: {{produto.estado_produto}}</strong></a>
+    </div>
+   
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock conteudo %}
