@@ -20,3 +20,10 @@ def produto (request,id_produto):
     return render(request, 'produto.html', context)
 
       
+def contato (request):
+
+    return render(request, 'contato.html')
+
+def sobre (request):
+
+    return render(request, 'sobre.html')
