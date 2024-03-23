@@ -37,12 +37,12 @@
 {% for ref in produtos %}
 
 <div class="col mb-4">
-<div class="card h-100" style="width: 18rem;">
+<div class="card h-100">
   <div class="card-body">
     <h5 class="card-title">Produto</h5>
     <p> Nome:  {{ref.nome}} </p>
       {% load static %}
-        <img src=" {{ref.imagem}}" height="250px" width="255px"card-img-top">
+        <img class="w-100 object-fit-contain" src="{{ref.imagem}}" width="255px">
     
   <h5>Por: R$ {{ref.valor}}</h5>
 
