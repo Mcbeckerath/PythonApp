@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from mercado.models import Produtos
+from mercado.forms import ProdutoForm
 # Create your views here.
 
 def home (request):
@@ -17,6 +18,9 @@ def produto (request,id_produto):
                                    
     context = {'produto':produto}
 
-    return render(request, 'produto.html', context)
+    forms = ProdutoForm()
+    context2 = {'form': forms}
+    
+    return render(request, 'produto.html', context, context2)
 
       
