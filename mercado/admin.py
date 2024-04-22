@@ -8,6 +8,7 @@ from mercado.models import Comentario
 from mercado.models import Pedido
 from mercado.models import Pagamento
 from mercado.models import Cidade
+from mercado.models import Estado
 
 # Register your models here.
 
@@ -20,4 +21,4 @@ admin.site.register(Comentario)
 admin.site.register(Pedido)
 admin.site.register(Pagamento)
 admin.site.register(Cidade)
-
+admin.site.register(Estado)
