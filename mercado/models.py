@@ -29,9 +29,9 @@ class Usuario (models.Model):
     Email = models.CharField(max_length=250)
     Senha = models.CharField(max_length=250)
     Telefone = models.CharField(max_length=250)
-    Endereco = models.CharField(max_length=250)
     cidade = models.ForeignKey("Cidade", on_delete=models.CASCADE, null=True)
     estado = models.ForeignKey("Estado", on_delete=models.CASCADE, null=True)
+    cep = models.ForeignKey("Cep", on_delete=models.CASCADE, null=True)
     tipo_usuario = models.ForeignKey("Tipo_Usuario", on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.nome
@@ -45,7 +45,12 @@ class Estado(models.Model):
     estado = models.CharField(max_length=50)
     def __str__(self):
         return self.estado
-    
+
+class Cep(models.Model):
+    cep = models.CharField(max_length=10)
+    def __str__(self):
+        return self.cep
+
 class Tipo_Usuario (models.Model):
     nome = models.CharField(max_length=250)
     def __str__(self):
