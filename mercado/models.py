@@ -33,7 +33,7 @@ class Usuario (models.Model):
     estado = models.ForeignKey("Estado", on_delete=models.CASCADE, null=True)
     bairro = models.ForeignKey("Bairro", on_delete=models.CASCADE, null=True)
     cep = models.ForeignKey("Cep", on_delete=models.CASCADE, null=True)
-    
+    endereco = models.ForeignKey("Endereco", on_delete=models.CASCADE, null= True)
     tipo_usuario = models.ForeignKey("Tipo_Usuario", on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.nome
@@ -57,6 +57,10 @@ class Cep(models.Model):
     def __str__(self):
         return self.cep
 
+class Endereco(models.Model):
+    endereco = models.CharField(max_length=250)
+    def __Str__(self):
+        return self.endereco
 class Tipo_Usuario (models.Model):
     nome = models.CharField(max_length=250)
     def __str__(self):
