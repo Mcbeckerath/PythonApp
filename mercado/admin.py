@@ -10,6 +10,7 @@ from mercado.models import Pagamento
 from mercado.models import Cidade
 from mercado.models import Estado
 from mercado.models import Cep
+from mercado.models import Bairro
 
 # Register your models here.
 
@@ -24,3 +25,4 @@ admin.site.register(Pagamento)
 admin.site.register(Cidade)
 admin.site.register(Estado)
 admin.site.register(Cep)
+admin.site.register(Bairro)

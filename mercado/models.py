@@ -31,7 +31,9 @@ class Usuario (models.Model):
     Telefone = models.CharField(max_length=250)
     cidade = models.ForeignKey("Cidade", on_delete=models.CASCADE, null=True)
     estado = models.ForeignKey("Estado", on_delete=models.CASCADE, null=True)
+    bairro = models.ForeignKey("Bairro", on_delete=models.CASCADE, null=True)
     cep = models.ForeignKey("Cep", on_delete=models.CASCADE, null=True)
+    
     tipo_usuario = models.ForeignKey("Tipo_Usuario", on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.nome
@@ -46,6 +48,10 @@ class Estado(models.Model):
     def __str__(self):
         return self.estado
 
+class Bairro(models.Model):
+    bairro = models.CharField(max_length=250)
+    def __str__(self):
+        return self.bairro
 class Cep(models.Model):
     cep = models.CharField(max_length=10)
     def __str__(self):
