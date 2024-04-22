@@ -83,6 +83,7 @@ class Pedido(models.Model):
 
 class Pagamento(models.Model):
     tipo =  models.CharField(max_length=250)
+    total_preco = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
     pedido = models.ForeignKey("Pedido",on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.tipo 
