@@ -34,6 +34,7 @@ class Usuario (models.Model):
     bairro = models.ForeignKey("Bairro", on_delete=models.CASCADE, null=True)
     cep = models.ForeignKey("Cep", on_delete=models.CASCADE, null=True)
     endereco = models.ForeignKey("Endereco", on_delete=models.CASCADE, null= True)
+    numero = models.IntegerField(default=0)
     tipo_usuario = models.ForeignKey("Tipo_Usuario", on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.nome
