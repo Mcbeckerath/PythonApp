@@ -16,10 +16,12 @@ class Categoria_Produto (models.Model):
      nome = models.CharField(max_length=250)
      def __str__(self):
         return self.nome
+     
 class Estado_Produto (models.Model):
     nome = models.CharField(max_length=250)
     def __str__(self):
         return self.nome   
+    
 class Usuario (models.Model):
         
     nome = models.CharField(max_length=250)
@@ -27,23 +29,29 @@ class Usuario (models.Model):
     Email = models.CharField(max_length=250)
     Senha = models.CharField(max_length=250)
     Telefone = models.CharField(max_length=250)
-    Endereço = models.CharField(max_length=250)
+    Endereco = models.CharField(max_length=250)
+    cidade = models.ForeignKey("Cidade", on_delete=models.CASCADE, null=True)
     tipo_usuario = models.ForeignKey("Tipo_Usuario", on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.nome
-class Tipo_Usuario (models.Model):
 
+class Cidade(models.Model):
+    cidade = models.CharField(max_length=50)
+    def __str__(self):
+        return self.cidade
+    
+class Tipo_Usuario (models.Model):
     nome = models.CharField(max_length=250)
     def __str__(self):
         return self.nome  
 
-class Comentarios(models.Model):
+class Comentario(models.Model):
     texto = models.CharField(max_length=250)
     avaliacao = models.DecimalField(max_digits=5, decimal_places=1)
     usuario = models.ForeignKey("Usuario", on_delete=models.CASCADE, null=True)
     produto = models.ForeignKey("Produtos", on_delete=models.CASCADE, null=True)
     def __str__(self):
-        return self.texto  
+        return self.texto   
 
 class Pedido(models.Model):
     usuario = models.ForeignKey("Usuario", on_delete=models.CASCADE, null=True)
