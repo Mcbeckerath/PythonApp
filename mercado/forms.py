@@ -1,11 +1,10 @@
-from django import forms 
+from django import forms
 from .models import Produtos
-
 
 class ProdutosForm(forms.ModelForm):
     class Meta: 
         model = Produtos
-        fields = ['nome', 'valor', 'descricao', 'imagem', 'categoria_produto', 'estado_produto']
+        fields = "__all__"
         labels = {
             'nome': 'Nome',
             'valor': 'Valor',

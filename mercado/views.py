@@ -32,15 +32,17 @@ def sobre (request):
 
     return render(request, 'sobre.html')
 
-
 def form_produto(request):
     """Adiciona um novo produto"""
-    form = ProdutosForm(request.POST)
+    form = ProdutosForm()
    
-    if form.is_valid():
-            form.save()
-    return HttpResponseRedirect(reverse('form_produto'))
+    if request.method == 'POST':
+            form = ProdutosForm(request.POST)
 
+            if form.is_valid():
+                form.save()
+                form = ProdutosForm()  
 
     context = {'form': form}
-    return render (request, 'form_produto.html', context)
+    
+    return render (request, 'formulario_produto.html', context)
