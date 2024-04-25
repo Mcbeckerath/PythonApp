@@ -1,18 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
-</head>
-<body>
-    FORMS
-    <form action ="."  method = "post" >
-        {% csrf_token %}
-        {{ form.as_p }}
-        
-        <input type = "submit" valor ="Cadastrar">
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    </form>
-</body>
-</html>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+            <div class="card shadow p-3 p-sm-5 rounded">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">Cadastro de Produto</h3>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="{{ form.nome.id_for_label }}">Nome</label>
+                            {{ form.nome }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.valor.id_for_label }}">Valor</label>
+                            {{ form.valor }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.descricao.id_for_label }}">Descrição</label>
+                            {{ form.descricao }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.imagem.id_for_label }}">Imagem</label>
+                            {{ form.imagem }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.categoria_produto.id_for_label }}">Categoria do Produto</label>
+                            {{ form.categoria_produto }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.estado_produto.id_for_label }}">Estado do Produto</label>
+                            {{ form.estado_produto }}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

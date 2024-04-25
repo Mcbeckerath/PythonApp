@@ -26,9 +26,9 @@ class Usuario (models.Model):
         
     nome = models.CharField(max_length=250)
     CPF_CNPJ = models.CharField(max_length=250)
-    Email = models.CharField(max_length=250)
-    Senha = models.CharField(max_length=250)
-    Telefone = models.CharField(max_length=250)
+    email = models.CharField(max_length=250)
+    senha = models.CharField(max_length=250)
+    telefone = models.CharField(max_length=250)
     cidade = models.ForeignKey("Cidade", on_delete=models.CASCADE, null=True)
     estado = models.ForeignKey("Estado", on_delete=models.CASCADE, null=True)
     bairro = models.ForeignKey("Bairro", on_delete=models.CASCADE, null=True)

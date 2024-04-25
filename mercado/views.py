@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from mercado.models import Produtos
-from mercado.forms import  ProdutosForm
+from mercado.forms import  ProdutosForm, UsuarioForm
 # Create your views here.
 
 def home (request):
@@ -46,3 +46,18 @@ def form_produto(request):
     context = {'form': form}
     
     return render (request, 'formulario_produto.html', context)
+
+def form_usuario(request):
+    """Adiciona um novo produto"""
+    form = UsuarioForm()
+   
+    if request.method == 'POST':
+            form = UsuarioForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                form = UsuarioForm()  
+
+    context = {'form': form}
+    
+    return render (request, 'formulario_usuario.html', context)

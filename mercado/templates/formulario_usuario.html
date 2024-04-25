@@ -1,0 +1,82 @@
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+            <div class="card shadow p-3 p-sm-5 rounded">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">Cadastro de Usuário</h3>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="{{ form.nome.id_for_label }}">Nome</label>
+                            {{ form.nome }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.CPF_CNPJ.id_for_label }}">CPF/CNPJ</label>
+                            {{ form.CPF_CNPJ }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.email.id_for_label }}">Email</label>
+                            {{ form.email }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.senha.id_for_label }}">Senha</label>
+                            {{ form.senha }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.telefone.id_for_label }}">Telefone</label>
+                            {{ form.telefone }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.cidade.id_for_label }}">Cidade</label>
+                            {{ form.cidade }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.estado.id_for_label }}">Estado</label>
+                            {{ form.estado }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.bairro.id_for_label }}">Bairro</label>
+                            {{ form.bairro }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.cep.id_for_label }}">CEP</label>
+                            {{ form.cep }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.endereco.id_for_label }}">Endereço</label>
+                            {{ form.endereco }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.numero.id_for_label }}">Número</label>
+                            {{ form.numero }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.tipo_usuario.id_for_label }}">Tipo de Usuário</label>
+                            {{ form.tipo_usuario }}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
