@@ -1,6 +1,32 @@
+from typing import Any, Mapping
 from django import forms
+from django.contrib.auth.models import User
+from django.core.files.base import File
+from django.db.models.base import Model
+from django.forms.utils import ErrorList
+from django.forms.widgets import *
 from .models import Produtos
 from .models import Usuario
+
+
+class LoginForm (forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username' , 'password']
+        widgets = {'password': PasswordInput()}
+    def __init__ (self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update(
+            {'placeholder':'Nome de Usuário',
+            'class' : 'form-control'} )
+        
+        self.fields['password'].widget.attrs.update(
+            {'placeholder':'Senha',
+             'class' : 'form-control',})    
+    
+       
+
+
 
 class ProdutosForm(forms.ModelForm):
     class Meta: 

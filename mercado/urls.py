@@ -1,5 +1,4 @@
 from django.urls import path
-
 from mercado import views
 
 urlpatterns = [
@@ -9,5 +8,6 @@ urlpatterns = [
     path('sobre/', views.sobre, name='sobre'),
     path('contato/', views.contato, name='contato'),
     path('form_produto/', views.form_produto, name ='form_produto'),
-    path('form_usuario/', views.form_usuario, name='form_usuario')
+    path('form_usuario/', views.form_usuario, name='form_usuario'),
+    path('login/', views.login, name='login')
    ]
