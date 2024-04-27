@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from mercado.models import Produtos
-from mercado.forms import  ProdutosForm, UsuarioForm, LoginForm
-from django.contrib.auth import login as authLogin, authenticate
+from mercado.forms import  ProdutosForm, UsuarioForm, LoginForm, ComentarioForm
+from django.contrib.auth import login as authLogin, authenticate, logout
+
 # Create your views here.
 
 def home (request):
@@ -67,3 +68,22 @@ def login(request):
     form  = LoginForm()
     context = {'form': form}
     return render (request, 'base.html', context)         
+
+def logout_view(request):
+
+    logout(request)
+    return HttpResponseRedirect(reverse('home')) 
+
+def form_comentario(request):
+    form = ComentarioForm()
+   
+    if request.method == 'POST':
+            form = ComentarioForm(request.POST)
+
+            if form.is_valid():
+                form.save()
+                form = ComentarioForm()  
+
+    context = {'form': form}    
+    return render (request, 'comentario.html', context)
+     

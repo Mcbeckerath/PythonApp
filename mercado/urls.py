@@ -9,5 +9,7 @@ urlpatterns = [
     path('contato/', views.contato, name='contato'),
     path('form_produto/', views.form_produto, name ='form_produto'),
     path('form_usuario/', views.form_usuario, name='form_usuario'),
-    path('login/', views.login, name='login')
-   ]
+    path('form_comentario/', views.form_comentario, name='form_comentario'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout_view, name='logout')
+]

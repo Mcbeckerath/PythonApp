@@ -7,6 +7,7 @@ from django.forms.utils import ErrorList
 from django.forms.widgets import *
 from .models import Produtos
 from .models import Usuario
+from .models import Comentario
 
 
 class LoginForm (forms.ModelForm):
@@ -86,3 +87,23 @@ class UsuarioForm(forms.ModelForm):
         self.fields['numero'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Número*', 'required': 'required'})    
         self.fields['tipo_usuario'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Tipo de Usuário*', 'required': 'required'})    
   
+
+
+class ComentarioForm(forms.ModelForm):
+    class Meta: 
+        model = Comentario
+        fields = "__all__"
+        labels = {
+            'texto': 'Texto',
+            'avaliacao': 'Avaliação',
+            'usuario': 'Usuário',
+            'produto': 'Produto',        
+            }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['texto'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Texto*', 'required': 'required'})
+        self.fields['avaliacao'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Avliação*', 'required': 'required'})
+        self.fields['usuario'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Usuário*', 'required': 'required'})    
+        self.fields['produto'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Produto*', 'required': 'required'})            

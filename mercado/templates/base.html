@@ -37,6 +37,12 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'form_usuario' %}">Registre-se</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'form_comentario' %}">Comentário</a>
+                </li>               
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
                 
 
               <!--  <li class="nav-item dropdown">
@@ -69,7 +75,8 @@
   {% block conteudo %}
 
   {% if user.is_authenticated %}
-      {{user.username}}
+      Olá,
+       {{user.username}}
   {% endif %}
   <form action = "{% url 'login'  %}" method="post">
     {% csrf_token %}
