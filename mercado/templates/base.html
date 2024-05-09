@@ -77,6 +77,7 @@
   {% if user.is_authenticated %}
       Olá,
        {{user.username}}
+       <a href="{% url 'logout' %}"> Sair </a>
   {% endif %}
   <form action = "{% url 'login'  %}" method="post">
     {% csrf_token %}
@@ -85,7 +86,12 @@
 
     <button name="submit">Login</button>
     <input type="hidden" name="next" value = "{% url 'home' %}"/>
+    
+  
   </form>
+  
+
+  
   {% endblock conteudo %}
 
 
