@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block conteudo %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-8">
+                <div class="card shadow p-3 p-sm-5 rounded">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">Comentário</h3>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <label for="{{ form.nome.id_for_label }}">Usuario</label>
+                                {{ form.usuario }}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.valor.id_for_label }}">Valor</label>
+                                {{ form.produto }}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.descricao.id_for_label }}">Descrição</label>
+                                {{ form.texto }}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.imagem.id_for_label }}">Imagem</label>
+                                {{ form.avaliacao }}
+                            </div>
+
+                            
+
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock conteudo %}
+
