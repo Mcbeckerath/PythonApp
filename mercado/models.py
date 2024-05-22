@@ -29,39 +29,11 @@ class Usuario (models.Model):
     email = models.CharField(max_length=250)
     senha = models.CharField(max_length=250)
     telefone = models.CharField(max_length=250)
-    cidade = models.ForeignKey("Cidade", on_delete=models.CASCADE, null=True)
-    estado = models.ForeignKey("Estado", on_delete=models.CASCADE, null=True)
-    bairro = models.ForeignKey("Bairro", on_delete=models.CASCADE, null=True)
-    cep = models.ForeignKey("Cep", on_delete=models.CASCADE, null=True)
-    endereco = models.ForeignKey("Endereco", on_delete=models.CASCADE, null= True)
-    numero = models.IntegerField(default=0)
     tipo_usuario = models.ForeignKey("Tipo_Usuario", on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.nome
 
-class Cidade(models.Model):
-    cidade = models.CharField(max_length=50)
-    def __str__(self):
-        return self.cidade
 
-class Estado(models.Model):
-    estado = models.CharField(max_length=50)
-    def __str__(self):
-        return self.estado
-
-class Bairro(models.Model):
-    bairro = models.CharField(max_length=250)
-    def __str__(self):
-        return self.bairro
-class Cep(models.Model):
-    cep = models.CharField(max_length=10)
-    def __str__(self):
-        return self.cep
-
-class Endereco(models.Model):
-    endereco = models.CharField(max_length=250)
-    def __Str__(self):
-        return self.endereco
 class Tipo_Usuario (models.Model):
     nome = models.CharField(max_length=250)
     def __str__(self):

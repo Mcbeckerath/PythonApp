@@ -63,12 +63,6 @@ class UsuarioForm(forms.ModelForm):
             'email': 'Email',
             'senha' : 'Senha',
             'telefone' : 'Telefone',
-            'estado' : 'Estado',
-            'cidade' : ' Cidade',
-            'bairro' : 'Bairro', 
-            'cep' : 'CEP', 
-            'endereco' : 'Endereço',  
-            'numero' : 'Número', 
             'tipo_usuario' : 'Tipo de usuário'
         }       
     def __init__(self, *args, **kwargs):
@@ -78,13 +72,7 @@ class UsuarioForm(forms.ModelForm):
         self.fields['CPF_CNPJ'].widget.attrs.update({'class': 'form-control', 'placeholder': 'CPF ou CNPJ*', 'required': 'required'})
         self.fields['email'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Email*', 'required': 'required'})    
         self.fields['senha'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Senha*', 'required': 'required'})    
-        self.fields['telefone'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Telefone*', 'required': 'required'})    
-        self.fields['cidade'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Cidade*', 'required': 'required'})
-        self.fields['estado'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Estado*', 'required': 'required'})
-        self.fields['bairro'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Bairro*', 'required': 'required'})
-        self.fields['cep'].widget.attrs.update({'class': 'form-control', 'placeholder': 'CEP*', 'required': 'required'})    
-        self.fields['endereco'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Endereço*', 'required': 'required'})
-        self.fields['numero'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Número*', 'required': 'required'})    
+        self.fields['telefone'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Telefone*', 'required': 'required'})      
         self.fields['tipo_usuario'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Tipo de Usuário*', 'required': 'required'})    
   
 
