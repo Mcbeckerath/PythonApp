@@ -95,3 +95,4 @@ class ComentarioForm(forms.ModelForm):
         self.fields['avaliacao'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Avliação*', 'required': 'required'})
         self.fields['usuario'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Usuário*', 'required': 'required'})    
         self.fields['produto'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Produto*', 'required': 'required'})            
+#comentario
