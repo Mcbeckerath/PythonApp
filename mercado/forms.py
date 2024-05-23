@@ -1,6 +1,6 @@
 from typing import Any, Mapping
 from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.core.files.base import File
 from django.db.models.base import Model
 from django.forms.utils import ErrorList
@@ -8,7 +8,6 @@ from django.forms.widgets import *
 from .models import Produtos
 from .models import Usuario
 from .models import Comentario
-
 
 class LoginForm (forms.ModelForm):
     class Meta:
@@ -24,11 +23,6 @@ class LoginForm (forms.ModelForm):
         self.fields['password'].widget.attrs.update(
             {'placeholder':'Senha',
              'class' : 'form-control',})    
-    
-       
-
-
-
 class ProdutosForm(forms.ModelForm):
     class Meta: 
         model = Produtos
@@ -56,26 +50,25 @@ class UsuarioForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = "__all__" 
+        fields = ['username', 'first_name','cpf','email','password','tipo_usuario'] 
         labels = {
-            'nome': 'Nome',
-            'CPF_CNPJ': 'CPF ou CNPJ',
+            'username': 'Usuario',
+            'first_name': 'Nome',
+            'cpf': 'CPF ou CNPJ',
             'email': 'Email',
-            'senha' : 'Senha',
-            'telefone' : 'Telefone',
+            'password' : 'Senha',
             'tipo_usuario' : 'Tipo de usuário'
         }       
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['nome'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nome Completo*', 'required': 'required'})
-        self.fields['CPF_CNPJ'].widget.attrs.update({'class': 'form-control', 'placeholder': 'CPF ou CNPJ*', 'required': 'required'})
+        self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Usuario', 'required': 'required'})
+        self.fields['first_name'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nome Completo*', 'required': 'required'})
+        self.fields['cpf'].widget.attrs.update({'class': 'form-control', 'placeholder': 'CPF ou CNPJ*', 'required': 'required'})
         self.fields['email'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Email*', 'required': 'required'})    
-        self.fields['senha'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Senha*', 'required': 'required'})    
-        self.fields['telefone'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Telefone*', 'required': 'required'})      
+        self.fields['password'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Senha*', 'required': 'required'})    
+        #self.fields['telefone'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Telefone*', 'required': 'required'})      
         self.fields['tipo_usuario'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Tipo de Usuário*', 'required': 'required'})    
-  
-
 
 class ComentarioForm(forms.ModelForm):
     class Meta: 
@@ -96,3 +89,19 @@ class ComentarioForm(forms.ModelForm):
         self.fields['usuario'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Usuário*', 'required': 'required'})    
         self.fields['produto'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Produto*', 'required': 'required'})            
 #comentario
+class UserForm (forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ['username','password','first_name','last_name','email','cpf','matricula','cargo','local']
+        widgets = {'password': PasswordInput(),'cpf':TextInput(),'matricula':TextInput()}
+    def __init__ (self, *args , **kwargs):
+        super().__init__(*args , **kwargs)
+        self.fields['username'].widget.attrs.update({'required':'True','placeholder':'Login','class':'col form-control my-2 p-2','autocomplete':'new-password'})
+        self.fields['password'].widget.attrs.update({'required':'True','placeholder':'Senha','class':'col form-control my-2 p-2','autocomplete':'new-password'})
+        self.fields['first_name'].widget.attrs.update({'required':'True','placeholder':'Nome','class':'col form-control my-2 p-2','autocomplete':'new-password'})
+        self.fields['last_name'].widget.attrs.update({'required':'True','placeholder':'Sobrenome','class':'col form-control my-2 p-2','autocomplete':'new-password'})
+        self.fields['email'].widget.attrs.update({'required':'True','placeholder':'Email','class':'col form-control my-2 p-2','autocomplete':'new-password'})
+        self.fields['cpf'].widget.attrs.update({'required':'True','placeholder':'CPF','class':'col form-control my-2 p-2','autocomplete':'new-password'})
+        self.fields['matricula'].widget.attrs.update({'required':'True','placeholder':'Matrícula','class':'col form-control my-2 p-2','autocomplete':'new-password'})
+        self.fields['cargo'].widget.attrs.update({'required':'True','class':'col form-control my-2 p-2'})
+        self.fields['local'].widget.attrs.update({'required':'True','class':'col form-control my-2 p-2'})

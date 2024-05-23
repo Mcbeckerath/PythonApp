@@ -2,7 +2,6 @@ from django.urls import path
 from mercado import views
 
 urlpatterns = [
-   
     path('', views.home, name='home'),
     path('produto/<id_produto>', views.produto, name='produto'),
     path('sobre/', views.sobre, name='sobre'),
@@ -11,5 +10,11 @@ urlpatterns = [
     path('form_usuario/', views.form_usuario, name='form_usuario'),
     path('form_comentario/', views.form_comentario, name='form_comentario'),
     path('login/', views.login, name='login'),
-    path('logout/', views.logout_view, name='logout')
+    path('logout/', views.logout_view, name='logout'),
+    path('encerrar/', views.encerrar, name="encerrar"),
+    path('editarperfil/', views.editarperfil, name="editarperfil"),    
+
+    path('caduser/', views.caduser, name="caduser"),
+    path('painel/', views.painel, name="painel"),    
+    path('toggleactive/<id>', views.toggleactive, name="toggleactive"),   
 ]
