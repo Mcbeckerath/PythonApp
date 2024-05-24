@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User 
 # Create your models here.
 class Produtos (models.Model):
 
@@ -22,16 +22,13 @@ class Estado_Produto (models.Model):
     def __str__(self):
         return self.nome   
     
-class Usuario (models.Model):
-        
-    nome = models.CharField(max_length=250)
+class Usuario (User):
+            
     CPF_CNPJ = models.CharField(max_length=250)
-    email = models.CharField(max_length=250)
-    senha = models.CharField(max_length=250)
     telefone = models.CharField(max_length=250)
     tipo_usuario = models.ForeignKey("Tipo_Usuario", on_delete=models.CASCADE, null=True)
     def __str__(self):
-        return self.nome
+        return self.CPF_CNPJ
 
 
 class Tipo_Usuario (models.Model):

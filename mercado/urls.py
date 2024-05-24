@@ -11,5 +11,6 @@ urlpatterns = [
     path('form_usuario/', views.form_usuario, name='form_usuario'),
     path('form_comentario/', views.form_comentario, name='form_comentario'),
     path('login/', views.login, name='login'),
-    path('logout/', views.logout_view, name='logout')
+    path('logout/', views.logout_view, name='logout'),
+    
 ]

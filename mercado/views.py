@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, QueryDict
 from django.urls import reverse
 from mercado.models import Produtos
 from mercado.forms import  ProdutosForm, UsuarioForm, LoginForm, ComentarioForm
-from django.contrib.auth import login as authLogin, authenticate, logout
-
+from django.contrib.auth import login as authLogin, authenticate, logout 
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 def home (request):
@@ -41,15 +43,21 @@ def form_produto(request):
 
 def form_usuario(request):
 
-    """Adiciona um novo produto"""
+    """Adiciona um novo Usuario"""
     form = UsuarioForm()
    
     if request.method == 'POST':
             form = UsuarioForm(request.POST)
 
             if form.is_valid():
+                post = form.save(commit=False)
+                post.password = make_password(post.password)
                 form.save()
                 form = UsuarioForm()  
+
+                return HttpResponseRedirect(reverse('login'))
+
+                
 
     context = {'form': form}    
     return render (request, 'formulario_usuario.html', context)
@@ -86,4 +94,5 @@ def form_comentario(request):
 
     context = {'form': form}    
     return render (request, 'comentario.html', context)
-     
+
+               

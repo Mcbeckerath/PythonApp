@@ -26,9 +26,6 @@ class LoginForm (forms.ModelForm):
              'class' : 'form-control',})    
     
        
-
-
-
 class ProdutosForm(forms.ModelForm):
     class Meta: 
         model = Produtos
@@ -58,21 +55,21 @@ class UsuarioForm(forms.ModelForm):
         model = Usuario
         fields = "__all__" 
         labels = {
-            'nome': 'Nome',
+            'username': 'Nome',
             'CPF_CNPJ': 'CPF ou CNPJ',
             'email': 'Email',
-            'senha' : 'Senha',
+            'password' : 'Senha',
             'telefone' : 'Telefone',
             'tipo_usuario' : 'Tipo de usuário'
         }       
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['nome'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nome Completo*', 'required': 'required'})
+        self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Nome Completo*', 'required': 'required'})
         self.fields['CPF_CNPJ'].widget.attrs.update({'class': 'form-control', 'placeholder': 'CPF ou CNPJ*', 'required': 'required'})
         self.fields['email'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Email*', 'required': 'required'})    
-        self.fields['senha'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Senha*', 'required': 'required'})    
-        self.fields['telefone'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Telefone*', 'required': 'required'})      
+        self.fields['password'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Senha*', 'required': 'required'})    
+        self.fields['telefone'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Telefone*', 'required': 'required'})    
         self.fields['tipo_usuario'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Tipo de Usuário*', 'required': 'required'})    
   
 
