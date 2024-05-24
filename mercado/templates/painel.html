@@ -3,7 +3,7 @@
 {% block modais %}
 
 <div id="modal-cadastro" class="modal" tabindex="-1">
-    <div class="modal-dialog position-absolute top-50 start-50 translate-middle w-75 w-lg-50">
+    <div class="modal-dialog position-absolute  start-50 translate-middle w-75 w-lg-50" style="top: 110%;">
       <div class="modal-content p-2">
         <h2 class="text-center"> Cadastro de Usuário </h2>
         <form action="{% url 'caduser' %}" method="post">
@@ -125,10 +125,7 @@
                 </thead>
                 <tbody>
                   
-                {% for user_id, user, form in users %}    
-                    <p>{{user.username}}</p>
-        
-                {% endfor %}
+            
                 {%  for user_id, usuario, form in users  %}
                     <tr class="{% cycle 'bg-light' 'bg-body-tertiary' %}">
                         <td>{{usuario.first_name}} {{usuario.last_name}}</td>

@@ -164,8 +164,7 @@ def painel (request):
             'grupos': Group.objects.all(),
             'users': [(user.id, user, UserForm(instance=user, auto_id=False)) for user in Usuario.objects.order_by('first_name')]
         }
-        for user in Usuario.objects.order_by('first_name'):
-            contexto['users'].append((user.id, user, UserForm(instance=user, auto_id=False)))
+       
         return render(request,'painel.html',contexto)
     return HttpResponseRedirect(reverse('home'))
 
